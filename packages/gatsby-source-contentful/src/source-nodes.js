@@ -358,7 +358,7 @@ export async function sourceNodes(
             // Add non existing references to reference field
             if (n[name] && !n[name].includes(nodeId)) {
               existingNodesThatNeedReverseLinksUpdateInDatastore.add(n)
-              n[name].push(nodeId)
+              Array.isArray(n[name]) ? n[name].push(nodeId) : n[name] = nodeId;
             }
           }
         )
